@@ -1,0 +1,31 @@
+操作符 ：包括算术操作符（如加号和减号）、位操作符、关系操作符和相等操作符
+    1. 一元操作符：只能操作一个值的操作符叫做一元操作符。一元操作符是 ECMAScript 中最简单的操作符。
+        递增和递减操作符
+    2. 位操作符
+    3.布尔操作符
+        1) 逻辑非 ！
+             如果操作数是一个对象，返回 false ；
+             如果操作数是一个空字符串，返回 true ；
+             如果操作数是一个非空字符串，返回 false ；
+             如果操作数是数值 0，返回 true ；
+             如果操作数是任意非 0 数值（包括 Infinity ），返回 false ；
+             如果操作数是 null ，返回 true ；
+             如果操作数是 NaN ，返回 true ；
+             如果操作数是 undefined ，返回 true 。
+        2) 逻辑与 &&
+        3）逻辑或 ||
+
+
+函数：
+    严格模式对函数有一些限制：//"use strict"
+         不能把函数命名为 eval 或 arguments ；
+         不能把参数命名为 eval 或 arguments ；
+         不能出现两个命名参数同名的情况。
+        如果发生以上情况，就会导致语法错误，代码无法执行。
+
+        function howManyArgs() {
+        alert(arguments.length);
+        }
+        howManyArgs("string", 45); //2
+        howManyArgs(); //0
+        howManyArgs(12); //1

@@ -1,0 +1,64 @@
+数据类型
+    1. typeof 与instanceof 区别
+        type: 是一个一元运算，放在一个运算数之前，运算数可以是任意类型;
+            typeof 一般只能返回如下几个结果：number,boolean,string,function,object,undefined;
+        instanceof: instance：实例,例子
+            instanceof 用于判断一个变量是否某个对象的实例，如 var a=new Array();alert(a instanceof Array); 
+                    会返回 true，同时 alert(a instanceof Object) 也会返回 true;这是因为 Array 是 object 的子类。
+    2. Boolean
+        Boolean() 返回 true or false
+        Boolean(Object)  if(Object == null) { false }; else { true } 
+    
+    3. Number 类型
+        Number() 函数的转换规则如下。
+         如果是 Boolean 值， true 和 false 将分别被转换为 1 和 0。
+         如果是数字值，只是简单的传入和返回。
+         如果是 null 值，返回 0。
+         如果是 undefined ，返回 NaN 。
+         如果是字符串，遵循下列规则：
+         如果字符串中只包含数字（包括前面带正号或负号的情况），则将其转换为十进制数值，即 "1"
+        会变成 1， "123" 会变成 123，而 "011" 会变成 11（注意：前导的零被忽略了）；
+         如果字符串中包含有效的浮点格式，如 "1.1" ，则将其转换为对应的浮点数值（同样，也会忽
+        略前导零）；
+         如果字符串中包含有效的十六进制格式，例如 "0xf" ，则将其转换为相同大小的十进制整
+        数值；
+         如果字符串是空的（不包含任何字符），则将其转换为 0；
+         如果字符串中包含除上述格式之外的字符，则将其转换为 NaN 。
+         如果是对象，则调用对象的 valueOf() 方法，然后依照前面的规则转换返回的值。如果转换
+        的结果是 NaN ，则调用对象的 toString() 方法，然后再次依照前面的规则转换返回的字符
+        串值。
+        *parseInt 可以设置第二个参数，指定基数类型
+        十六进制的
+            parseInt("0xAF",16) = 175
+            parseInt("AF", 16) = 175
+
+            var num1 = parseInt("1234blue"); // 1234
+            var num2 = parseInt(""); // NaN
+            var num3 = parseInt("0xA"); // 10（十六进制数）
+            var num4 = parseInt(22.5); // 22
+            var num5 = parseInt("070"); // 56（八进制数）
+            var num6 = parseInt("70"); // 70（十进制数）
+            var num7 = parseInt("0xf"); // 15（十六进制数）
+
+            var num1 = parseInt("10", 2); //2 （按二进制解析）
+            var num2 = parseInt("10", 8); //8 （按八进制解析）
+            var num3 = parseInt("10", 10); //10 （按十进制解析）
+            var num4 = parseInt("10", 16); //16 （按十六进制解析）
+        *parseFloat() 只解析十进制值，因此它没有用第二个参数指定基数的用法
+
+    4. String
+        \n 换行
+        \t 制表
+        \b 空格
+        \r 回车
+        \f 进纸
+        \\ 斜杠
+        \' 单引号（ ' ），在用单引号表示的字符串中使用。例如： 'He said, \'hey.\''
+        \" 双引号（ " ），在用双引号表示的字符串中使用。例如： "He said, \"hey.\""
+        \xnn 以十六进制代码 nn 表示的一个字符（其中 n 为0～F）。例如， \x41 表示 "A"
+        \unnnn 以十六进制代码 nnnn 表示的一个Unicode字符（其中 n 为0～F）。例如， \u03a3 表示希腊字符Σ
+         
+         toString() 可以输出以二进制、八进制、十六进制
+    
+    5. Object 类型
+        ECMAScript 中的对象其实就是一组数据和功能的集合

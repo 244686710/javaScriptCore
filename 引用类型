@@ -1,0 +1,59 @@
+severse(), 颠倒；
+sort(), 排序 
+    function Sort(a, b){
+        return a-b
+    }
+
+    console.log([0,11, 12, 22, 13, 33 ,15].sort(Sort))
+操作方法
+    concat , splice 返回新数组，不改变原来数组
+        splice :
+            删除： splice(0, 2) 会删除数组中的前两项
+            插入： splice(2, 0, "red", "green") 从当前数组的位置2开始插入字符串“red” 和“green”
+            替换： splice(2, 1, "red", "green") 会删除当前数组位置 2 的项，然后再从位置 2 开始插入字符串"red" 和 "green" 。
+位置方法：
+    indexOf(), lastIndexOf()
+迭代方法：
+     every() ：对数组中的每一项运行给定函数，如果该函数对每一项都返回 true ，则返回 true 。
+     filter() ：对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组。
+     forEach() ：对数组中的每一项运行给定函数。这个方法没有返回值。
+     map() ：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+     some() ：对数组中的每一项运行给定函数，如果该函数对任一项返回 true ，则返回 true 。
+归并方法：
+    reduce() 和 reduceRight()这两个方法都会迭代数组的所有项，然后构建一个最终返回的值
+
+Date 类型
+    Date.parse() 方法接收一个表示日期的字符串参数，然后尝试根据这个字符串返回相应日
+期的毫秒数
+
+Function 类型
+    函数内部属性：arguments 和 this
+    定义阶乘 
+    function factorial(num){
+        if (num <=1) {
+            return 1;
+        } else {
+            return num * factorial(num-1)
+        }
+    }
+
+    function factorial(num){
+        if (num <=1) {
+            return 1;
+        } else {
+            return num * arguments.callee(num-1)
+        }
+    }
+
+单体内置对象：
+    Global 对象
+        isNaN(), isFinite(), parseInt(), parseFloat()
+        URI 编码对象
+            encodeURI() 和encodeURIComponent()
+            与 encodeURI() 和 encodeURIComponent() 方法对应的两个方法分别是 decodeURI() 和decodeURIComponent() 
+
+        eval() 方法
+
+    Math:
+        Math.random() 方法返回大于等于 0 小于 1 的一个随机数
+            值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)
