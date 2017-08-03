@@ -54,8 +54,8 @@
         var person1 = createPerson("Nicholas", 29, "Software Engineer");
         var person2 = createPerson("Greg", 27, "Doctor");
 
-    2.2 构造函数模式
-        function person(name, age, job){
+    2.2 构造函数模式 (构造函数推荐函数首字母大写)
+        function Person(name, age, job){
             this.name = name;
             this.age = age;
             this.job = job;
@@ -63,3 +63,58 @@
                 console.log(this.name)
             }
         }
+
+        var person1 = new Person('Yyd', 26, 'Software Engineer')
+
+    2.3 原型模式
+        每一份函数都有prototype（原型）属性，这个属性是一个指针，指向一个对象，而这个对象的用途
+        是包含可以由特定类型的所有实例共享的属性和方法
+        function Person(){
+        }
+        Person.prototype.name = "Nicholas";
+        Person.prototype.age = 29;
+        Person.prototype.job = "Software Engineer";
+        Person.prototype.sayName = function(){
+        alert(this.name);
+        };
+        var person1 = new Person();
+        person1.sayName(); //"Nicholas"
+        var person2 = new Person(); 
+
+        判断对象与对象的_proto_ 关系 ：isPrototypeof();
+        Object.getPrototypeOf():
+        Object.getPrototypeOf()可以方便地取得一个对象的原型，而这在利用原型实现继承（本章稍后会讨论）的情况下是非常重要的
+        hasOwnProperty() 方法可以检测一个属性是存在于实例中，还是存在于原型中
+        Object.keys():取得对象上所有可枚举的实例属性
+
+    2.4 组合使用构造函数模式和原型模式  
+        构造函数与原型混成的模式，是目前在 ECMAScript中使用最广泛、认同度最高的一种创建自
+        定义类型的方法。可以说，这是用来定义引用类型的一种默认模式  
+        function Person(name, age, job){
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.friends = ["Shelby", "Court"];
+        }
+        Person.prototype = {
+            constructor : Person,
+            sayName : function(){
+                alert(this.name);
+            }
+        }
+        var person1 = new Person("Nicholas", 29, "Software Engineer");
+        var person2 = new Person("Greg", 27, "Doctor");
+        person1.friends.push("Van");
+        alert(person1.friends); //"Shelby,Count,Van"
+        alert(person2.friends); //"Shelby,Count"
+        alert(person1.friends === person2.friends); //false
+        alert(person1.sayName === person2.sayName); //true
+
+    2.5 动态原型模式
+
+3 继承  由原型链来实现继承
+
+    3.1 原型链
+        确认原型和实例的关系
+            instanceof 
+            Object.prototype.isPrototypeOf()
