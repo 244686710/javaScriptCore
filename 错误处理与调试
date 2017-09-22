@@ -1,0 +1,13 @@
+function testFinally(){ 
+ try { 
+ return 2; 
+ } catch (error){ 
+ return 1; 
+ } finally { 
+ return 0; 
+ } 
+}  // 0
+
+请读者务必要记住，只要代码中包含finally 子句，那么无论try 还是catch 语句块
+中的return 语句都将被忽略。因此，在使用finally 子句之前，一定要非常清楚你想让代
+码怎么样

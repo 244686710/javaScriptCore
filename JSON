@@ -1,0 +1,60 @@
+理解JSON语法
+解析JSON
+序列化JSON
+
+    JSON语法： 简单值，对象，数组
+    JSON 对象有两个方法：stringify()和 parse()
+
+    普通对象转json对象
+    var jsonText = JSON.stringify({});
+
+    json 对象转javascript
+    var obj = JSON.parse(jsonText)
+
+    序列化选项：
+        1. 过滤结果
+        如果过滤器参数是数组，那么 JSON.stringify()的结果中将只包含面的例子。
+        var book = { 
+        "title": "Professional JavaScript", 
+        "authors": [ 
+        "Nicholas C. Zakas" 
+        ], 
+        edition: 3, 
+        year: 2011 
+        }; 
+        var jsonText = JSON.stringify(book, ["title", "edition"]); 
+
+        JSON.stringify()的第二个参数是一个数组，其中包含两个字符串："title"和"edition"。这
+        两个属性与将要序列化的对象中的属性是对应的，因此在返回的结果字符串中，就只会包含这两个属性：
+        {"title":"Professional JavaScript","edition":3} 
+
+        如果第二个参数是函数，行为会稍有不同。传入的函数接收两个参数，属性（键）名和属性值。根
+        据属性（键）名可以知道应该如何处理要序列化的对象中的属性。属性名只能是字符串，而在值并非键
+        值对儿结构的值时，键名可以是空字符串。
+        为了改变序列化对象的结果，函数返回的值就是相应键的值。不过要注意，如果函数返回了
+        undefined，那么相应的属性会被忽略。还是看一个例子吧。
+        var book = { 
+        "title": "Professional JavaScript", 
+        "authors": [ 
+        "Nicholas C. Zakas" 
+        ], 
+        edition: 3, 
+        year: 2011 
+        }; 
+        var jsonText = JSON.stringify(book, function(key, value){ 
+        switch(key){ 
+        case "authors": 
+        return value.join(",") 
+        case "year": 
+        return 5000; 
+        case "edition": 
+        return undefined; 
+        default: 
+        return value; 
+        } 
+        }); 
+        序列化后的 JSON 字符串如下所示：
+        {"title":"Professional JavaScript","authors":"Nicholas C. Zakas","year":5000}
+
+        2. 字符串缩进
+            JSON.stringify()方法的第三个参数用于控制结果中的缩进和
