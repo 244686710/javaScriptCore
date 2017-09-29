@@ -57,4 +57,14 @@
         {"title":"Professional JavaScript","authors":"Nicholas C. Zakas","year":5000}
 
         2. 字符串缩进
-            JSON.stringify()方法的第三个参数用于控制结果中的缩进和
+            JSON.stringify()方法的第三个参数用于控制结果中的缩进和空白符
+
+        3.解析选项
+            JSON.parse()方法也可以接收另一个参数，该参数是一个函数，将在每个键值对儿上调用。      
+            JSON.parse() 还原函数（reviver）
+
+小结 ECMAScript 5 定义了一个原生的 JSON 对象，可以用来将对象序列化为 JSON 字符串或者将 JSON
+数据解析为 JavaScript 对象。JSON.stringify()和 JSON.parse()方法分别用来实现上述两项功能。
+这两个方法都有一些选项，通过它们可以改变过滤的方式，或者改变序列化的过程。
+原生的 JSON 对象也得到了很多浏览器的支持，比如 IE8+、Firefox 3.5+、Safari 4+、Opera 10.5 和
+Chrome。  
